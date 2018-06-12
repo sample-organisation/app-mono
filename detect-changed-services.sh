@@ -3,6 +3,8 @@
 detect_changed_services() {
   echo "----------------------------------------------"
   echo "detecting changed folders for this commit"
+  
+  echo "SHIPPABLE_COMMIT_RANGE is $SHIPPABLE_COMMIT_RANGE"
 
   # get a list of all the changed folders only
   changed_folders=`git diff --name-only $SHIPPABLE_COMMIT_RANGE | grep / | awk 'BEGIN {FS="/"} {print $1}' | uniq`
@@ -27,11 +29,11 @@ detect_changed_services() {
   do
       echo "-------------------Running packaging for $service---------------------"
       # copy the common code to the service so that it can be packaged in the docker image
-      cp -r ./_global $service
-      pushd "$service"
+      # cp -r ./_global $service
+      #pushd "$service"
       # move the build script to the root of the service
-      mv ./_global/package-service.sh ./.
-      ./package-service.sh "$service"
+      # mv ./_global/package-service.sh ./.
+      # ./package-service.sh "$service"
       popd
   done
 }
