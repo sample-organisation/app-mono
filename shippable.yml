@@ -26,3 +26,23 @@ build:
 #      branches:
 #        only:
 #          - master
+
+resources:
+  - name: sample-gitRepo
+    type: gitRepo
+    integration: github
+    versionTemplate:
+      sourceName: "sample-organisation/gitRepo"
+      branch: get_git_changes
+
+jobs:
+  - name: chekcing-get-git-changes
+    type: runSh
+    steps:
+      - IN: sample-gitRepo
+      - TASK:
+          script:
+            - git clone https://github.com/scriptnull/node.git nodeRepo
+            - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
+            - rm -rf nodeRepo
+            - shipctl get_git_changes
