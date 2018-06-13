@@ -11,6 +11,7 @@ env:
 
 build:
   ci:
+    - getopt --help
     # create directories needed for unit tests and code coverage
     - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/testresults
     - mkdir -p $SHIPPABLE_BUILD_DIR/shippable/codecoverage
