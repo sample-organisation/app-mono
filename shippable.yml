@@ -45,4 +45,4 @@ jobs:
             - git clone https://github.com/scriptnull/node.git nodeRepo
             - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
             - rm -rf nodeRepo
-            - shipctl get_git_changes
+            - shipctl get_git_changes --resource="sample-gitRepo"
