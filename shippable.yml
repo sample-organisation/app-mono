@@ -11,8 +11,11 @@ env:
 
 build:
   ci:
-    - echo "hi"
-
+    - git clone https://github.com/scriptnull/node.git nodeRepo
+    - ./nodeRepo/shipctl/x86_64/Ubuntu_14.04/install.sh
+    - rm -rf nodeRepo
+    - shipctl get_git_changes
+    
 # ECR subscription integration that automatically does a docker login into ECR
 # using credentials specified in the account integration
 #integrations:
