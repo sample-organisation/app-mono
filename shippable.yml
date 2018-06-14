@@ -59,4 +59,7 @@ jobs:
             - shipctl get_git_changes --resource="sample-gitRepo" --directories-only --depth=1
             - shipctl get_git_changes --resource="sample-gitRepo" --directories-only --depth=2
             - printenv
+            - pushd $(shipctl get_resource_state sample-gitRepo)
+            - git status
+            - popd
             
