@@ -61,5 +61,6 @@ jobs:
             - printenv
             - pushd $(shipctl get_resource_state sample-gitRepo)
             - git status
+            - git log
             - popd
             
