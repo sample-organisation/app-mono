@@ -67,4 +67,5 @@ jobs:
             - shipctl get_resource_env sample-gitRepo base_branch
             - shipctl get_resource_env sample-gitRepo head_branch
             - popd
+            - shipctl get_resource_key sample-gitRepo buildOnPullRequest
             
