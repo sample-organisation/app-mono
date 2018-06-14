@@ -64,6 +64,7 @@ jobs:
             - git log
             - git remote -v 
             - git branch --all
+            - git show-ref
             - shipctl get_resource_env sample-gitRepo is_pull_request
             - shipctl get_resource_env sample-gitRepo commit
             - shipctl get_resource_env sample-gitRepo base_branch
