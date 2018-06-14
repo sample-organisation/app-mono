@@ -40,6 +40,7 @@ resources:
     versionTemplate:
       sourceName: "sample-organisation/gitRepo"
       branch: get_git_changes
+      buildOnPullRequest: true
 
 jobs:
   - name: chekcing-get-git-changes
