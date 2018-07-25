@@ -12,6 +12,8 @@ env:
 build:
   ci:
     - echo "checking shipctl"
+    - shipctl get_integration_resource_field aws_keys accessKey
+
 #     - git clone https://github.com/scriptnull/node.git nodeRepo
 #     - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
     
