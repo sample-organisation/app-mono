@@ -28,6 +28,10 @@ build:
 #          - master
 
 resources:
+  - name: "aws_keys"
+    type: integration
+    integration: sample_aws
+
   - name: sample-gitRepo
     type: gitRepo
     integration: github
