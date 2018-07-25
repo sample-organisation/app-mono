@@ -11,15 +11,9 @@ env:
 
 build:
   ci:
-    - git clone https://github.com/scriptnull/node.git nodeRepo
-    - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
-    - rm -rf nodeRepo
-    - shipctl get_git_changes --path=./
-    - shipctl get_git_changes --path=./ --depth=1
-    - shipctl get_git_changes --path=./ --depth=2
-    - shipctl get_git_changes --path=./ --directories-only
-    - shipctl get_git_changes --path=./ --directories-only --depth=1
-    - shipctl get_git_changes --path=./ --directories-only --depth=2
+    - echo "checking shipctl"
+#     - git clone https://github.com/scriptnull/node.git nodeRepo
+#     - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
     
     
 # ECR subscription integration that automatically does a docker login into ECR
