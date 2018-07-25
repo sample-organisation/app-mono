@@ -47,6 +47,7 @@ jobs:
     type: runCI
     steps:
       - IN: app-mono_ciRepo
+      - IN: aws_keys
 
   - name: chekcing-get-git-changes
     type: runSh
