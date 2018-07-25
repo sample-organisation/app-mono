@@ -47,6 +47,12 @@ resources:
       buildOnPullRequest: true
 
 jobs:
+  - name: app-mono_runCI
+    type: runCI
+    steps:
+      - IN: app-mono_ciRepo
+      - IN: aws_keys
+
   - name: chekcing-get-git-changes
     type: runSh
     steps:
