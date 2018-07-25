@@ -13,68 +13,9 @@ build:
   ci:
     - echo "checking shipctl"
     - shipctl get_integration_resource_field aws_keys accessKey
+    - printenv
 
 #     - git clone https://github.com/scriptnull/node.git nodeRepo
 #     - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
-    
-    
-# ECR subscription integration that automatically does a docker login into ECR
-# using credentials specified in the account integration
-#integrations:
-#  hub:
-#    - integrationName: "dr-aws-keys"
-#      type: ecr
-#      region: us-east-1
-#      branches:
-#        only:
-#          - master
 
-resources:
-  - name: "aws_keys"
-    type: integration
-    integration: sample_aws
-
-  - name: sample-gitRepo
-    type: gitRepo
-    integration: github
-    versionTemplate:
-      sourceName: "sample-organisation/gitRepo"
-      branch: get_git_changes
-      buildOnPullRequest: true
-
-jobs:
-  - name: app-mono_runCI
-    type: runCI
-    steps:
-      - IN: app-mono_ciRepo
-      - IN: aws_keys
-
-  - name: chekcing-get-git-changes
-    type: runSh
-    steps:
-      - IN: sample-gitRepo
-      - TASK:
-          script:
-            - git clone https://github.com/scriptnull/node.git nodeRepo
-            - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
-            - rm -rf nodeRepo
-            - shipctl get_git_changes --resource="sample-gitRepo"
-            - shipctl get_git_changes --resource="sample-gitRepo" --depth=1
-            - shipctl get_git_changes --resource="sample-gitRepo" --depth=2
-            - shipctl get_git_changes --resource="sample-gitRepo" --directories-only
-            - shipctl get_git_changes --resource="sample-gitRepo" --directories-only --depth=1
-            - shipctl get_git_changes --resource="sample-gitRepo" --directories-only --depth=2
-            - printenv
-            - pushd $(shipctl get_resource_state sample-gitRepo)
-            - git status
-            - git log
-            - git remote -v 
-            - git branch --all
-            - git show-ref
-            - shipctl get_resource_env sample-gitRepo is_pull_request
-            - shipctl get_resource_env sample-gitRepo commit
-            - shipctl get_resource_env sample-gitRepo base_branch
-            - shipctl get_resource_env sample-gitRepo head_branch
-            - popd
-            - shipctl get_resource_version_key sample-gitRepo shaData.beforeCommitSha
             
