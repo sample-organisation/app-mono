@@ -1,18 +1,12 @@
 # Language setting
-language: node_js
+language: java
 
 # Version number
-node_js:
-  - 8.2.1
+jdk:
+  - openjdk11
 
-env:
-  global:
-    - XUNIT_FILE=$SHIPPABLE_BUILD_DIR/shippable/testresults/result.xml API_PORT=80
 
 build:
   ci:
-    - echo "installing shipctl"
-    - git clone https://github.com/scriptnull/node.git nodeRepo
-    - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
-    - shipctl get_integration_resource_field aws_keys accessKey
-    - shipctl get_integration_resource_field invalid_integration accessKey
+    - java --version
+    - javac --version
