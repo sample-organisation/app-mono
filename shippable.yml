@@ -10,3 +10,6 @@ build:
   ci:
     - java --version
     - javac --version
+    - source /etc/drydock/.env
+    - java --version
+    - javac --version
